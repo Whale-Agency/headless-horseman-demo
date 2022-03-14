@@ -1,0 +1,31 @@
+{
+  "name": "headless-horseman-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontity demo project using Headless Horseman theme",
+  "keywords": [
+    "frontity"
+  ],
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "scripts": {
+    "dev": "frontity dev",
+    "build": "frontity build",
+    "serve": "frontity serve"
+  },
+  "prettier": {},
+  "dependencies": {
+    "frontity": "^1.17.2",
+    "@frontity/core": "^1.15.1",
+    "@frontity/wp-source": "^1.11.7",
+    "@frontity/tiny-router": "^1.4.4",
+    "@frontity/html2react": "^1.7.0",
+    "@whale-agency/headless-horseman-theme-typescript": "./packages/headless-horseman-theme-typescript"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.40",
+    "@types/node-fetch": "^2.6.1"
+  }
+}
