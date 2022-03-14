@@ -1,7 +1,7 @@
 {
   "name": "@whale-agency/headless-horseman-theme-typescript",
   "version": "1.0",
-  "description": "A starter theme for Frontity, written in TypeScript",
+  "description": "A starter theme for Frontity, written in TypeScript. This team is based on the Mars starter theme by frontity.org",
   "keywords": [
     "frontity",
     "frontity-theme",
@@ -9,14 +9,14 @@
     "whale-agency",
     "headless-horseman-theme-typescript"
   ],
-  "homepage": "https://frontity.org",
+  "homepage": "https://www.whale-agency.com/",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/frontity/frontity.git"
+    "url": "https://github.com/Whale-Agency/headless-horseman-demo.git"
   },
   "bugs": {
-    "url": "https://community.frontity.org"
+    "url": "https://github.com/Whale-Agency/headless-horseman-demo/issues"
   },
   "dependencies": {
     "@frontity/components": "^1.8.2",

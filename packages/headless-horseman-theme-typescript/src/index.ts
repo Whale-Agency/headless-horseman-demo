@@ -1,11 +1,11 @@
-import MarsThemeTypeScript from "../types";
+import HeadlessHorsemanThemeTypescript from "../types";
 import Theme from "./components";
 import image from "@frontity/html2react/processors/image";
 import iframe from "@frontity/html2react/processors/iframe";
 import link from "@frontity/html2react/processors/link";
 
-const marsThemeTypeScript: MarsThemeTypeScript = {
-  name: "@frontity/mars-theme-typescript",
+const headlessHorsemanThemeTypescript: HeadlessHorsemanThemeTypescript = {
+  name: "@whale-agency/headless-horseman-theme-typescript",
   roots: {
     /**
      * In Frontity, any package can add React components to the site.
@@ -55,4 +55,4 @@ const marsThemeTypeScript: MarsThemeTypeScript = {
   },
 };
 
-export default marsThemeTypeScript;
+export default headlessHorsemanThemeTypescript;

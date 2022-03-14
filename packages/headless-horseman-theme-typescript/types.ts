@@ -90,7 +90,7 @@ interface HeadlessHorsemanThemeTypescript extends Package {
 export default HeadlessHorsemanThemeTypescript;
 
 /**
- * Packages required by `MarsThemeTypeScript`.
+ * Packages required by `HeadlessHorsemanThemeTypeScript`.
  */
 export type Packages = MergePackages<
   Frontity,
