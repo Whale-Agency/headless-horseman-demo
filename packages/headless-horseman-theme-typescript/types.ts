@@ -1,8 +1,6 @@
-import { Package, Action, MergePackages, Frontity } from "frontity/types";
+import { Package, Action } from "frontity/types";
 import { AutoPrefetch } from "@frontity/components/link/types";
-import Html2React from "@frontity/html2react/types";
-import Router from "@frontity/router/types";
-import Source from "@frontity/source/types";
+import Packages from "../types";
 
 /**
  * A Frontity starter theme designed to learn Frontity.
@@ -88,14 +86,3 @@ interface HeadlessHorsemanThemeTypescript extends Package {
 }
 
 export default HeadlessHorsemanThemeTypescript;
-
-/**
- * Packages required by `HeadlessHorsemanThemeTypeScript`.
- */
-export type Packages = MergePackages<
-  Frontity,
-  Router,
-  Source,
-  Html2React,
-  HeadlessHorsemanThemeTypescript
->;
