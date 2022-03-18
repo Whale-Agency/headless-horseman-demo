@@ -1,6 +1,6 @@
 import { Package, Action } from "frontity/types";
 import { AutoPrefetch } from "@frontity/components/link/types";
-import Packages from "../types";
+import Packages from ".";
 
 /**
  * A Frontity starter theme designed to learn Frontity.
