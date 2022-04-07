@@ -2,6 +2,7 @@ import { connect, styled, useConnect } from "frontity";
 import Link from "./link";
 import Nav from "./nav";
 import MobileMenu from "./menu";
+import Container from "./container/container";
 import { Packages } from "../../types";
 
 /**
@@ -14,23 +15,24 @@ const Header = () => {
   return (
     <>
       <Container>
-        <StyledLink link="/">
-          <Title>{state.frontity.title}</Title>
-        </StyledLink>
-        <Description>{state.frontity.description}</Description>
-        <MobileMenu />
+        <Inner>
+          <StyledLink link="/">
+            <Title>{state.frontity.title}</Title>
+          </StyledLink>
+          <Description>{state.frontity.description}</Description>
+          <MobileMenu />
+        </Inner>
       </Container>
-      <Nav />
+      <Container>
+        <Nav />
+      </Container>
     </>
   );
 };
 
 export default connect(Header);
 
-const Container = styled.div`
-  width: 848px;
-  max-width: 100%;
-  box-sizing: border-box;
+const Inner = styled.header`
   padding: 24px;
   color: #fff;
   display: flex;

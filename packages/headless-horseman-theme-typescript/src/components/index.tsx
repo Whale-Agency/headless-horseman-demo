@@ -8,6 +8,7 @@ import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
 import { Packages } from "../../types";
+import globalStyles from "./../styles/index";
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -27,6 +28,9 @@ const Theme = () => {
         <meta name="description" content={state.frontity.description} />
         <html lang="en" />
       </Head>
+
+      {/* Guttenberg default styles. */}
+      <link rel="stylesheet" href={"/wp-includes/css/dist/block-library/style.css"} />
 
       {/* Add some global styles for the whole site, like body or a's. 
       Not classes here because we use CSS-in-JS. Only global HTML tags. */}
@@ -52,19 +56,6 @@ const Theme = () => {
 };
 
 export default connect(Theme);
-
-const globalStyles = css`
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-  a,
-  a:visited {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
 
 const HeadContainer = styled.div`
   display: flex;

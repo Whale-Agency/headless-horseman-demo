@@ -10,6 +10,7 @@ import {
 import { Packages } from "../../types";
 import FeaturedMedia from "./featured-media";
 import { PostTypeEntity, PostTypeData } from "@frontity/source/types";
+import Container from "./container/container";
 
 /**
  * Properties received by the `Post` component.
@@ -67,64 +68,68 @@ const Post = ({ data }: PostProps): JSX.Element => {
 
   // Load the post, but only if the data is ready.
   return data.isReady ? (
-    <Container>
-      <div>
-        <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+    <Wrapper>
+      <Container>
+        <div>
+          <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
 
-        {/* Only display author and date on posts */}
-        {isPostEntity(post) && (
-          <div>
-            {author && (
-              <StyledLink link={author.link}>
-                <Author>
-                  By <b>{author.name}</b>
-                </Author>
-              </StyledLink>
-            )}
-            <DateWrapper>
-              {" "}
-              on <b>{new Date(post.date).toDateString()}</b>
-            </DateWrapper>
-          </div>
+          {/* Only display author and date on posts */}
+          {isPostEntity(post) && (
+            <div>
+              {author && (
+                <StyledLink link={author.link}>
+                  <Author>
+                    By <b>{author.name}</b>
+                  </Author>
+                </StyledLink>
+              )}
+              <DateWrapper>
+                {" "}
+                on <b>{new Date(post.date).toDateString()}</b>
+              </DateWrapper>
+            </div>
+          )}
+        </div>
+
+        {/* Look at the settings to see if we should include the featured image */}
+        {state.theme.featured.showOnPost &&
+          (isPostEntity(post) || isPageEntity(post)) && (
+            <FeaturedMedia id={post.featured_media} />
+          )}
+
+        {isAttachmentEntity(post) && (
+          // If the post is an attachment, just render the description property,
+          // which already contains the thumbnail.
+          <div dangerouslySetInnerHTML={{ __html: post.description?.rendered }} />
         )}
-      </div>
-
-      {/* Look at the settings to see if we should include the featured image */}
-      {state.theme.featured.showOnPost &&
-        (isPostEntity(post) || isPageEntity(post)) && (
-          <FeaturedMedia id={post.featured_media} />
-        )}
-
-      {isAttachmentEntity(post) && (
-        // If the post is an attachment, just render the description property,
-        // which already contains the thumbnail.
-        <div dangerouslySetInnerHTML={{ __html: post.description?.rendered }} />
-      )}
+      </Container>
 
       {(isPostEntity(post) || isPageEntity(post)) && (
         // Render the content using the Html2React component so the HTML is
         // processed by the processors we included in the
         // libraries.html2react.processors array.
+        //
+        // Make sure NOT to wrap it with a fixed-width container. 
+        // Full width sections must be set inside the editor.
         <Content>
           <Html2React html={post.content?.rendered} />
         </Content>
       )}
-    </Container>
+    </Wrapper>
+
   ) : null;
 };
 
 export default connect(Post);
 
-const Container = styled.div`
-  width: 800px;
-  margin: 0;
-  padding: 24px;
+const Wrapper = styled.div`
+  width: 100%;
 `;
 
 const Title = styled.h1`
   margin: 0;
-  margin-top: 24px;
-  margin-bottom: 8px;
+  margin-top: 54px;
+  margin-bottom: 54px;
   color: rgba(12, 17, 43);
 `;
 
@@ -149,15 +154,20 @@ const DateWrapper = styled.p`
  * selectors to style that HTML.
  */
 const Content = styled.div`
-  color: rgba(12, 17, 43, 0.8);
-  word-break: break-word;
+  width: 100%;
 
-  * {
-    max-width: 100%;
+  //Make all direct children have fixed width
+  > * {
+    max-width: var(--container-width);
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
-  p {
-    line-height: 1.6em;
+  //Make the direct children that have .is-full class be full width.
+  .is-full {
+    max-width: 100%;
   }
 
   img {
@@ -180,69 +190,7 @@ const Content = styled.div`
     margin: auto;
   }
 
-  blockquote {
-    margin: 16px 0;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-left: 4px solid rgba(12, 17, 43);
-    padding: 4px 16px;
-  }
-
-  a {
-    color: rgb(31, 56, 197);
-    text-decoration: underline;
-  }
-
-  /* Input fields styles */
-
-  input[type="text"],
-  input[type="email"],
-  input[type="url"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="date"],
-  textarea,
-  select {
-    display: block;
-    padding: 6px 12px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    outline-color: transparent;
-    transition: outline-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    margin: 8px 0 4px 0;
-
-    &:focus {
-      outline-color: #1f38c5;
-    }
-  }
-
-  input[type="submit"] {
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid #1f38c5;
-    padding: 12px 36px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #1f38c5;
-  }
-
   /* WordPress Core Align Classes */
-
   @media (min-width: 420px) {
     img.aligncenter,
     img.alignleft,
