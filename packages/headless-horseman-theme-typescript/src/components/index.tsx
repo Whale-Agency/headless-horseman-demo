@@ -30,7 +30,8 @@ const Theme = () => {
       </Head>
 
       {/* Guttenberg default styles. */}
-      <link rel="stylesheet" href={"/wp-includes/css/dist/block-library/style.css"} />
+      {/* @todo get it via rest api */}
+      <link rel="stylesheet" href={"https://headless-horseman.whaledev.com/wp-includes/css/dist/block-library/style.css"} />
 
       {/* Add some global styles for the whole site, like body or a's. 
       Not classes here because we use CSS-in-JS. Only global HTML tags. */}
