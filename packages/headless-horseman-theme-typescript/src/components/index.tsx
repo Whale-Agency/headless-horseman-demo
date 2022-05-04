@@ -7,7 +7,8 @@ import Post from "./post";
 import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
-import { Packages } from "../../types";
+import globalStyles, { HasBreakpoints } from "./../styles";
+import Packages from "../../../types";
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -52,19 +53,6 @@ const Theme = () => {
 };
 
 export default connect(Theme);
-
-const globalStyles = css`
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-  a,
-  a:visited {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
 
 const HeadContainer = styled.div`
   display: flex;
