@@ -2,7 +2,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "github:donkoko/now-builder"
+      "use": "@donkoko/now"
     }
   ]
 }
