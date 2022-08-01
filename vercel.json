@@ -1,8 +1,0 @@
-{
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@frederiknordahl/now"
-    }
-  ]
-}
