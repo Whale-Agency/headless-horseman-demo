@@ -2,7 +2,7 @@
   "name": "headless-horseman-demo",
   "version": "1.0.0",
   "private": true,
-  "description": "Frontity demo project using Headless Horseman theme",
+  "description": "Frontity demo project using Headless Horseman theme using a custom builder",
   "keywords": [
     "frontity"
   ],
