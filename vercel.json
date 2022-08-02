@@ -2,7 +2,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@donkoko/now"
+      "use": "@frederiknordahl/now"
     }
   ]
 }

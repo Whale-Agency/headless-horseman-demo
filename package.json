@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev": "frontity dev",
-    "build": "frontity build",
+    "build": "node -v && frontity build && node -v",
     "serve": "frontity serve"
   },
   "prettier": {},
