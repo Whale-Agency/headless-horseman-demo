@@ -5,7 +5,11 @@
   "description": "Frontity demo project using Headless Horseman theme using a custom builder",
   "keywords": [
     "frontity"
-  ],
+  ],  
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
   "scripts": {
     "dev": "frontity dev",
     "build": "node -v && frontity build && node -v",
